@@ -24,7 +24,7 @@ public class ShowSelectedPropertiesCommand
             .Select(element => GetElementProperties(element))
             .ToList();
 
-        PropertiesWindow window = new PropertiesWindow(properties);
+        PropertiesWindow window = new(properties);
         window.ShowDialog();
         return Result.Succeeded;
     }

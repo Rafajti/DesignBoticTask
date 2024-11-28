@@ -2,10 +2,19 @@
 <RevitAddIns>
   <AddIn Type="Command">
     <Name>Show Selected Properties</Name>
-    <Assembly>D:\Repos\DesignBoticTask\DesignBoticLib\obj\Debug\net8.0-windows\ref</Assembly>
+    <Assembly>D:\Repos\DesignBoticTask\DesignBoticLib\obj\Debug\net8.0-windows\ref\DesignBoticLib.dll</Assembly>
     <AddInId>12345678-1234-1234-1234-123456789abc</AddInId>
     <FullClassName>DesignBoticLib.Commands.ShowSelectedPropertiesCommand</FullClassName>
     <VendorId>RafIT</VendorId>
     <VendorDescription>Display selected elements' properties in WPF</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Name>Pick Color</Name>
+    <Assembly>D:\Repos\DesignBoticTask\DesignBoticLib\obj\Debug\net8.0-windows\ref\DesignBoticLib.dll</Assembly>
+    <AddInId>22345678-2234-2234-2234-223456789abc</AddInId>
+    <FullClassName>DesignBoticLib.Commands.ApplyColorCommand</FullClassName>
+    <VendorId>RafIT</VendorId>
+    <VendorDescription>Color element</VendorDescription>
   </AddIn>
 </RevitAddIns>

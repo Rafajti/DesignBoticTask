@@ -15,7 +15,7 @@ public class ShowSelectedPropertiesCommand
         var selectedElementIds = uiDoc.Selection.GetElementIds();
         if (selectedElementIds.Count == 0)
         {
-            TaskDialog.Show("Informacja", "Nie zaznaczono żadnych elementów.");
+            TaskDialog.Show("Information", "Didnt select any element");
             return Result.Succeeded;
         }
 

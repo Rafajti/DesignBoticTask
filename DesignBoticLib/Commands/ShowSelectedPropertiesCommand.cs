@@ -26,19 +26,19 @@ public class ShowSelectedPropertiesCommand : IExternalCommand
             List<ElementProperties> elementProperties = selectedElementIds
                .Select(id => doc.GetElement(id))
                .Select(element => new ElementProperties
-               {
-                   Name = element.Name,
-                   Id = element.Id.IntegerValue,
-                   Parameters = element.Parameters
+               (
+                   Name: element.Name,
+                   Id: element.Id.Value,
+                   Parameters: element.Parameters
                        .Cast<Parameter>()
                        .Select(p => new KeyValuePair<string, string>(
                            p.Definition.Name,
                            p.AsValueString() ?? p.AsString() ?? "N/A"))
                        .ToList()
-               }).ToList();
+               )).ToList();
 
 
-            PropertiesWindow propertiesWindow = new PropertiesWindow(elementProperties);
+            PropertiesWindow propertiesWindow = new(elementProperties);
             propertiesWindow.ShowDialog();
 
             return Result.Succeeded;
@@ -50,15 +50,5 @@ public class ShowSelectedPropertiesCommand : IExternalCommand
             return Result.Failed;
         }
 
-    }
-
-    private static string GetElementProperties(Element element)
-    {
-        string name = element.Name;
-        var parameters = element.Parameters.Cast<Parameter>()
-            .Select(p => $"{p.Definition.Name}: {p.AsValueString() ?? p.AsString()}")
-            .ToList();
-
-        return $"{name}\n{string.Join("\n", parameters)}";
     }
 }

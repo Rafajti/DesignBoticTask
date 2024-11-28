@@ -1,8 +1,6 @@
 ﻿namespace DesignBoticUI.Models;
 
-public class ElementProperties
+public record ElementProperties(string Name, long Id, List<KeyValuePair<string, string>> Parameters)
 {
-    public string Name { get; set; }
-    public int Id { get; set; }
-    public List<KeyValuePair<string, string>> Parameters { get; set; }
+
 }

@@ -1,10 +1,7 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Selection;
 using DesignBoticUI.Views;
-using System;
-using System.Windows;
 
 namespace DesignBoticLib.Commands;
 
@@ -20,7 +17,7 @@ public class ApplyColorCommand : IExternalCommand
         {
             var selectedElementIds = uiDoc.Selection.GetElementIds();
             var selectedElement = doc.GetElement(selectedElementIds.First());
-            ColorPickWindow colorPicker = new ColorPickWindow();
+            ColorPickWindow colorPicker = new();
             if (colorPicker.ShowDialog() != true)
             {
                 TaskDialog.Show("Information", "Cancelled");
@@ -28,16 +25,14 @@ public class ApplyColorCommand : IExternalCommand
             }
 
             System.Windows.Media.Color wpfColor = colorPicker.SelectedColor;
-            Color revitColor = new Color(wpfColor.R, wpfColor.G, wpfColor.B);
+            Color revitColor = new(wpfColor.R, wpfColor.G, wpfColor.B);
 
-            using (Transaction trans = new Transaction(doc, "Change Element Color"))
+            using (Transaction trans = new(doc, "Change Element Color"))
             {
                 trans.Start();
 
-                OverrideGraphicSettings ogs = new OverrideGraphicSettings();
+                OverrideGraphicSettings ogs = new();
                 ogs.SetProjectionLineColor(revitColor);
-
-                //doc.ActiveView.SetElementOverrides(selectedElement.Id, ogs);
 
                 trans.Commit();
             }

@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="PropertiesWindow" Height="450" Width="800">
     <Grid>
-        <TextBox Name="PropertiesTextBox" 
-                 Margin="10" 
-                 TextWrapping="Wrap" 
-                 VerticalScrollBarVisibility="Auto" 
-                 HorizontalScrollBarVisibility="Auto"
-                 IsReadOnly="True"/>
+        <DataGrid x:Name="PropertiesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Parameter Name" Binding="{Binding Key}" Width="*" />
+                <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

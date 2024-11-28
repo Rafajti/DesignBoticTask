@@ -15,19 +15,11 @@ public class ApplyColorCommand : IExternalCommand
     {
         UIDocument uiDoc = commandData.Application.ActiveUIDocument;
         Document doc = uiDoc.Document;
-        View activeView = doc.ActiveView;
 
         try
         {
-            Reference pickedRef = uiDoc.Selection.PickObject(ObjectType.Element, "Select element to color");
-            if (pickedRef == null)
-            {
-                TaskDialog.Show("Information", "Didnt selec any element");
-                return Result.Cancelled;
-            }
-
-            Element selectedElement = doc.GetElement(pickedRef);
-
+            var selectedElementIds = uiDoc.Selection.GetElementIds();
+            var selectedElement = doc.GetElement(selectedElementIds.First());
             ColorPickWindow colorPicker = new ColorPickWindow();
             if (colorPicker.ShowDialog() != true)
             {
@@ -38,28 +30,30 @@ public class ApplyColorCommand : IExternalCommand
             System.Windows.Media.Color wpfColor = colorPicker.SelectedColor;
             Color revitColor = new Color(wpfColor.R, wpfColor.G, wpfColor.B);
 
-            OverrideGraphicSettings overrideSettings = new OverrideGraphicSettings();
-            overrideSettings.SetProjectionLineColor(revitColor);
-            overrideSettings.SetSurfaceBackgroundPatternColor(revitColor);
-            overrideSettings.SetSurfaceBackgroundPatternId(ElementId.InvalidElementId); 
-
-            using (Transaction transaction = new Transaction(doc, "Coloring element"))
+            using (Transaction trans = new Transaction(doc, "Change Element Color"))
             {
-                transaction.Start();
-                activeView.SetElementOverrides(selectedElement.Id, overrideSettings);
-                transaction.Commit();
+                trans.Start();
+
+                OverrideGraphicSettings ogs = new OverrideGraphicSettings();
+                ogs.SetProjectionLineColor(revitColor);
+
+                //doc.ActiveView.SetElementOverrides(selectedElement.Id, ogs);
+
+                trans.Commit();
             }
+
 
             TaskDialog.Show("Success", "Element has been coloured");
             return Result.Succeeded;
         }
-        catch (OperationCanceledException)
+        catch (OperationCanceledException e)
         {
-            return Result.Cancelled;
+            TaskDialog.Show("Error", e.Message);
+            return Result.Failed;
         }
         catch (Exception ex)
         {
-            message = $"Exception details: {ex.Message}";
+            TaskDialog.Show("Error", ex.Message);
             return Result.Failed;
         }
     }

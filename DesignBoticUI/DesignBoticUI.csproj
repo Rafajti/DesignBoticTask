@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.1" />
+    <PackageReference Include="Syncfusion.Shared.Base" Version="27.2.4" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="27.2.4" />
   </ItemGroup>
 
 </Project>

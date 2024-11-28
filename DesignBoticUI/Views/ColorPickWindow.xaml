@@ -5,16 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:DesignBoticUI.Views"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="ColorPickWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Choose color:" Margin="5" />
-            <xctk:ColorPicker x:Name="colorPicker" Width="200" Margin="5" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="OK" Width="75" Margin="5" Click="OnOkClick" />
-                <Button Content="Anuluj" Width="75" Margin="5" Click="OnCancelClick" />
-            </StackPanel>
+        <StackPanel Margin="10">
+            <Label Content="Choose Color:" FontSize="14"/>
+            <syncfusion:ColorPicker Name="colorPicker" Height="100" Width="280"/>
         </StackPanel>
     </Grid>
 </Window>

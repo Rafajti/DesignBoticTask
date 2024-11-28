@@ -16,16 +16,16 @@ namespace DesignBoticUI.Views
             InitializeComponent();
         }
 
-        private void OnOkClick(object sender, RoutedEventArgs e)
+        private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            SelectedColor = (Color)colorPicker.SelectedColor;
-            DialogResult = true;
+            //SelectedColor = ColorPickerControl.SelectedColor ?? Colors.White;
+            //DialogResult = true;
             Close();
         }
 
-        private void OnCancelClick(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            //DialogResult = false;
             Close();
         }
     }

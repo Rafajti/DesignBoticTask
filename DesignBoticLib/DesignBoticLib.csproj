@@ -7,11 +7,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <!-- other property settings -->
-    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DesignBoticUI\DesignBoticUI.csproj" />
   </ItemGroup>

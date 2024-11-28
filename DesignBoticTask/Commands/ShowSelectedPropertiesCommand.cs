@@ -8,11 +8,9 @@ public class ShowSelectedPropertiesCommand
 {
     public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
     {
-        // Pobranie aktywnego dokumentu
         UIDocument uiDoc = commandData.Application.ActiveUIDocument;
         Document doc = uiDoc.Document;
 
-        // Pobranie zaznaczonych elementów
         var selectedElementIds = uiDoc.Selection.GetElementIds();
         if (selectedElementIds.Count == 0)
         {
@@ -20,13 +18,11 @@ public class ShowSelectedPropertiesCommand
             return Result.Succeeded;
         }
 
-        // Tworzenie listy z właściwościami
         var properties = selectedElementIds
             .Select(id => doc.GetElement(id))
             .Select(element => GetElementProperties(element))
             .ToList();
 
-        // Wyświetlenie WPF z właściwościami
         PropertiesWindow window = new PropertiesWindow(properties);
         window.ShowDialog();
         return Result.Succeeded;
@@ -34,13 +30,11 @@ public class ShowSelectedPropertiesCommand
 
     private string GetElementProperties(Element element)
     {
-        // Pobierz nazwę elementu i właściwości
         string name = element.Name;
         var parameters = element.Parameters.Cast<Parameter>()
             .Select(p => $"{p.Definition.Name}: {p.AsValueString() ?? p.AsString()}")
             .ToList();
 
-        // Połącz wszystko w jeden string
         return $"{name}\n{string.Join("\n", parameters)}";
     }
 }

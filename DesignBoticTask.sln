@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignBoticTask", "DesignBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignBoticUI", "DesignBoticUI\DesignBoticUI.csproj", "{078A3939-7789-485F-8986-94C42EAC2224}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignBoticTaskTests", "DesignBoticTaskTests\DesignBoticTaskTests.csproj", "{C3F44C10-3BF0-425B-AD0B-6557E509D08A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{078A3939-7789-485F-8986-94C42EAC2224}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{078A3939-7789-485F-8986-94C42EAC2224}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{078A3939-7789-485F-8986-94C42EAC2224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F44C10-3BF0-425B-AD0B-6557E509D08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F44C10-3BF0-425B-AD0B-6557E509D08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F44C10-3BF0-425B-AD0B-6557E509D08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F44C10-3BF0-425B-AD0B-6557E509D08A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

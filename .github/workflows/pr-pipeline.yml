@@ -17,7 +17,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 7.0  # Wersja .NET SDK
+          dotnet-version: 8.0.0  # Wersja .NET SDK
 
       # Przywrócenie zależności
       - name: Restore dependencies

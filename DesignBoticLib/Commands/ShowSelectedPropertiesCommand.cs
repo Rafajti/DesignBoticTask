@@ -1,7 +1,8 @@
-﻿using System.Reflection.Metadata;
-using System.Xml.Linq;
+﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using DesignBoticUI.Views;
 
-namespace DesignBoticTask.Commands;
+namespace DesignBoticLib.Commands;
 
 [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
 public class ShowSelectedPropertiesCommand
@@ -28,7 +29,7 @@ public class ShowSelectedPropertiesCommand
         return Result.Succeeded;
     }
 
-    private string GetElementProperties(Element element)
+    private static string GetElementProperties(Element element)
     {
         string name = element.Name;
         var parameters = element.Parameters.Cast<Parameter>()

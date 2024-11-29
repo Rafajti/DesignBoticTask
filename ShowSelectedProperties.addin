@@ -26,4 +26,13 @@
     <VendorId>RafIT</VendorId>
     <VendorDescription>Test Revit Addin</VendorDescription>
   </AddIn>
+
+  <AddIn Type="Command">
+    <Name>Show Models Command</Name>
+    <Assembly>D:\Repos\DesignBoticTask\DesignBoticLib\bin\Debug\net8.0-windows\DesignBoticLib.dll</Assembly>
+    <AddInId>abcd1234-abcd-1234-abcd-1234abcd1234</AddInId>
+    <FullClassName>DesignBoticLib.Commands.CheckBreaks.ShowModelsCommand</FullClassName>
+    <VendorId>RafIT</VendorId>
+    <VendorDescription>Test Revit Addin</VendorDescription>
+  </AddIn>
 </RevitAddIns>

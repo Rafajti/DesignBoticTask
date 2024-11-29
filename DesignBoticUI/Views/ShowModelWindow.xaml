@@ -1,0 +1,50 @@
+﻿<Window x:Class="DesignBoticUI.Views.ShowModelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesignBoticUI.Views"
+        mc:Ignorable="d"
+        Title="ShowModelWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Filter by Category:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <ComboBox x:Name="CategoryComboBox" Width="200" SelectionChanged="CategoryComboBox_SelectionChanged" />
+        </StackPanel>
+        
+        <DataGrid x:Name="ElementInfoGrid" 
+                  AutoGenerateColumns="False" 
+                  Grid.Row="1"
+                  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Stretch" 
+                  CanUserAddRows="False"
+                  IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Id}" Width="100"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                <DataGridTextColumn Header="Category" IsReadOnly="True" Binding="{Binding Category}" Width="200"/>
+                <DataGridTextColumn Header="Parameter Count" IsReadOnly="True" Binding="{Binding ParameterCount}" Width="150">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <EventSetter Event="PreviewMouseDown" Handler="ParametersColumn_Click"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="SaveButton" 
+                Content="Save Changes" 
+                Grid.Row="2" 
+                HorizontalAlignment="Right" 
+                Width="120" 
+                Margin="0,10,0,0"
+                Click="SaveButton_Click"/>
+    </Grid>
+</Window>
